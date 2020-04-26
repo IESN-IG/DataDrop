@@ -10,7 +10,7 @@ const {
 } = require('../config');
 const { MessageEmbed } = require('discord.js');
 
-const eventListener = (client, log, member) => {
+const eventListener = (client, logger, member) => {
   const annoncesRole = member.guild.roles.cache.get(annoncesRoleid);
 
   const fields = [
@@ -51,20 +51,20 @@ const eventListener = (client, log, member) => {
   member.roles
     .add(annoncesRole)
     .then((m) =>
-      log.info(
+      logger.info(
         `Le rôle <${annoncesRole.name}> a été ajouté à <${member.user.tag}> à l'entrée de la guilde`
       )
     )
-    .catch(log.error);
+    .catch(logger.error);
 
   member
     .send(embed)
     .then((m) =>
-      log.info(
+      logger.info(
         `Un DM a été envoyé à <${member.user.tag}> à son entrée dans la guilde`
       )
     )
-    .catch(log.error);
+    .catch(logger.error);
 };
 
 module.exports = {

@@ -9,7 +9,7 @@ module.exports = {
   usage: '[commande]',
 };
 
-module.exports.execute = (client, log, message, args) => {
+module.exports.execute = (client, logger, message, args) => {
   const data = [];
   const { commands } = message.client;
   let msg = undefined;
@@ -28,7 +28,7 @@ module.exports.execute = (client, log, message, args) => {
 
     if (message.channel.type === 'dm') {
       return message.author.send(msg).catch((error) => {
-        log.error(
+        logger.error(
           `Erreur lors de l'envoi d'un DM à ${message.author.tag}.\n`,
           error
         );

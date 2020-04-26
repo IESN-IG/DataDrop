@@ -1,13 +1,12 @@
 ﻿const { ok_hand } = require('../config');
 
 module.exports = {
-  name: 'restart',
+  name: 'stop',
   description: 'Relance le bot',
   ownerOnly: true,
 
-  async execute(client, log, message, args) {
-    log.info('Arrêt en cours...');
+  async execute(client, logger, message, args) {
     await message.channel.send(ok_hand);
-    process.exit();
+    client.kill();
   },
 };

@@ -5,7 +5,7 @@ const {
   salleDeClasseBloc3Channelid,
 } = require('../config');
 
-const eventListener = async (client, log, oldState, newState) => {
+const eventListener = async (client, logger, oldState, newState) => {
   const classrooms = [
     salleDeClasseBloc1Channelid,
     salleDeClasseBloc2Channelid,
@@ -30,11 +30,11 @@ const eventListener = async (client, log, oldState, newState) => {
   classroomChannel
     .setName(salleDeClasseChannelname)
     .then((c) =>
-      log.info(
+      logger.info(
         `Le canal de type '${c.type}' identifié <${c.id}> a été renommé avec succès`
       )
     )
-    .catch(log.error);
+    .catch(logger.error);
 };
 
 module.exports = {

@@ -13,8 +13,8 @@ module.exports = {
   adminOnly: true,
   guildOnly: true,
 
-  execute(client, log, message, args) {
-    log.info('Purge des rôles annuels en cours...');
+  execute(client, logger, message, args) {
+    logger.info('Purge des rôles annuels en cours...');
 
     const ig1RoleMembers = Array.from(
       message.guild.roles.cache.get(ig1Roleid).members.cache.values()
@@ -58,7 +58,7 @@ module.exports = {
     }
     //
 
-    log.info('Tous les rôles annuels ont été purgés.');
+    logger.info('Tous les rôles annuels ont été purgés.');
     return message.channel.send(ok_hand);
   },
 };

@@ -53,7 +53,7 @@ module.exports.description =
   '\n**Sous-commandes:**\n' +
   `${module.exports.subcommands.keyArray().join(', ')}`;
 
-module.exports.execute = async (client, log, message, args) => {
+module.exports.execute = async (client, logger, message, args) => {
   let embeds = [];
 
   switch (args[0].toLowerCase()) {
