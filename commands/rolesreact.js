@@ -25,7 +25,7 @@ module.exports = {
   guildOnly: true,
   ownerOnly: true,
 
-  async execute(client, log, message, args) {
+  async execute(client, logger, message, args) {
     const rolesChannel = message.guild.channels.cache.get(rolesChannelid);
     const optionsChannel = message.guild.channels.cache.get(optionsChannelid);
 

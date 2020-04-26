@@ -19,7 +19,7 @@ const {
   datascienceEmote,
 } = require('../config');
 
-module.exports = async (client, log, messageReaction, user) => {
+const eventListener = async (client, logger, messageReaction, user) => {
   const message = messageReaction.message;
   const rolesChannel = message.guild.channels.cache.get(rolesChannelid);
   const optionsChannel = message.guild.channels.cache.get(optionsChannelid);
@@ -57,58 +57,63 @@ module.exports = async (client, log, messageReaction, user) => {
   ) {
     switch (messageReaction.emoji.name) {
       case ig1Emote:
-        member.roles.add(ig1Role).catch(log.error);
-        log.info(
+        member.roles.add(ig1Role).catch(logger.error);
+        logger.info(
           `Le rôle <${ig1Role.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case ig2Emote:
-        member.roles.add(ig2Role).catch(log.error);
-        log.info(
+        member.roles.add(ig2Role).catch(logger.error);
+        logger.info(
           `Le rôle <${ig2Role.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case ig3Emote:
-        member.roles.add(ig3Role).catch(log.error);
-        log.info(
+        member.roles.add(ig3Role).catch(logger.error);
+        logger.info(
           `Le rôle <${ig3Role.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case alumniEmote:
-        member.roles.add(alumniRole).catch(log.error);
-        log.info(
+        member.roles.add(alumniRole).catch(logger.error);
+        logger.info(
           `Le rôle <${alumniRole.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case tuteurEmote:
-        member.roles.add(tuteurRole).catch(log.error);
-        log.info(
+        member.roles.add(tuteurRole).catch(logger.error);
+        logger.info(
           `Le rôle <${tuteurRole.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case annoncesEmote:
-        member.roles.remove(annoncesRole).catch(log.error);
-        log.info(
+        member.roles.remove(annoncesRole).catch(logger.error);
+        logger.info(
           `Le rôle <${annoncesRole.name}> a été retiré de <${member.user.tag}>`
         );
         break;
 
       case smartcityEmote:
-        member.roles.add(optionSmartcityRole).catch(log.error);
-        log.info(
+        member.roles.add(optionSmartcityRole).catch(logger.error);
+        logger.info(
           `Le rôle <${optionSmartcityRole.name}> a été donné à <${member.user.tag}>`
         );
         break;
       case datascienceEmote:
-        member.roles.add(optionDatascienceRole).catch(log.error);
-        log.info(
+        member.roles.add(optionDatascienceRole).catch(logger.error);
+        logger.info(
           `Le rôle <${optionDatascienceRole.name}> a été donné à <${member.user.tag}>`
         );
         break;
 
       default:
-        messageReaction.users.remove(member).catch(log.error);
+        messageReaction.users.remove(member).catch(logger.error);
         break;
     }
   }
+};
+
+module.exports = {
+  name: 'messageReactionAdd',
+  listen: eventListener
 };

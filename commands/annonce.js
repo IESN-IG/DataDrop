@@ -10,7 +10,7 @@ module.exports = {
   guildOnly: true,
   adminOnly: true,
 
-  execute(client, log, message, args) {
+  execute(client, logger, message, args) {
     const annoncesChannel = message.guild.channels.cache.get(annoncesChannelid);
     const annoncesRole = message.guild.roles.cache.get(annoncesRoleid);
     const embed = new MessageEmbed()

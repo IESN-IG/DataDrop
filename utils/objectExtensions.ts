@@ -8,10 +8,6 @@ declare global {
     removeDiacritics(): string;
     clean(): string;
   }
-
-  interface Array<T> {
-    isEmpty(): boolean;
-  }
 }
 
 // <String>.toCapitalizeCase() returns a proper-cased string such as:
@@ -36,10 +32,4 @@ String.prototype.removeDiacritics = function (this: string): string {
 // 'This      seems all-------right'.clean() returns 'This seems all-right'
 String.prototype.clean = function (this: string): string {
   return this.replace(/([\t\s-])+/g, '$1');
-};
-
-// <Array>.isEmpty() returns whether the array is empty or not
-// [1, 2, 3, 4, 5].isEmpty() returns false.
-Array.prototype.isEmpty = function (this: []): boolean {
-  return this.length === 0;
 };

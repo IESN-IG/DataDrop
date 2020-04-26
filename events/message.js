@@ -7,7 +7,7 @@ const {
 
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-module.exports = (client, log, message) => {
+const eventListener = (client, logger, message) => {
   if (message.author.bot) return;
 
   const lowerCasedContent = message.content.toLowerCase();
@@ -26,7 +26,7 @@ module.exports = (client, log, message) => {
     );
   if (!command) return;
 
-  log.info(
+  logger.info(
     `${message.author.tag} (${message.author.id}) a utilisé "${command.name}" ${
       message.channel.type === 'text'
         ? `dans #${message.channel.name} (${message.channel.id})`
@@ -35,9 +35,7 @@ module.exports = (client, log, message) => {
   );
 
   if (command.guildOnly && message.channel.type !== 'text') {
-    return message.reply(
-      "Je ne peux pas exécuter cette commande en dehors d'une guilde!"
-    );
+    return message.reply("Je ne peux pas exécuter cette commande en dehors d'une guilde!");
   }
 
   if (command.args && !args.length) {
@@ -57,11 +55,14 @@ module.exports = (client, log, message) => {
   if ((command.adminOnly || command.ownerOnly) && !isAuthorized) return;
 
   try {
-    command.execute(client, log, message, args);
+    command.execute(client, logger, message, args);
   } catch (error) {
-    log.error(error);
-    message.reply(
-      ":x: **Oups!** - Une erreur est apparue en essayant cette commande. Reporte-le à un membre du Staff s'il te plaît!"
-    );
+    logger.error(error.stack);    
+    message.reply(":x: **Oups!** - Une erreur est apparue en essayant cette commande. Reporte-le à un membre du Staff, s'il te plaît!");
   }
+};
+
+module.exports = {
+  name: 'message',
+  listen: eventListener
 };
