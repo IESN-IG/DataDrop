@@ -1,3 +1,7 @@
+# Custom 
+utils/objectExtensions.js
+utils/*.d.ts
+
 # Logs
 logs
 *.log

@@ -1,20 +1,14 @@
 const { Client, Collection } = require('discord.js');
 const fs = require('fs');
-const { Logger, LogEventLevel } = require('@hunteroi/advanced-logger');
-require('dotenv-flow').config({ silent: true });
+const log = require('./utils/logger');
 
-const log = new Logger({
-  minLevel: LogEventLevel[(process.env.MIN_LEVEL || 'info').toLowerCase()],
-  includeTimestamp: Boolean(process.env.INCLUDE_TIMESTAMP)
-});
 const client = new Client();
 client.commands = new Collection();
-client.cooldowns = new Collection();
 
 // TODO: refactor 12 & 23 (dry principle)
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error;
-  files.forEach(file => {
+  files.forEach((file) => {
     if (!file.endsWith('.js')) return;
     const evt = require(`./events/${file}`);
     let evtName = file.split('.')[0];
@@ -25,7 +19,7 @@ fs.readdir('./events/', (err, files) => {
 
 fs.readdir('./commands/', async (err, files) => {
   if (err) return console.error;
-  files.forEach(file => {
+  files.forEach((file) => {
     if (!file.endsWith('.js')) return;
     const props = require(`./commands/${file}`);
     let cmdName = file.split('.')[0];

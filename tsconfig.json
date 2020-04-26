@@ -1,0 +1,28 @@
+{
+  "include": ["utils/*.ts"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2019",
+    "lib": [
+      "esnext",
+      "esnext.array",
+      "esnext.asynciterable",
+      "esnext.intl",
+      "esnext.symbol"
+    ],
+    "types": [
+      "node",
+      "reflect-metadata"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "declaration": true,
+    "removeComments": false,
+    "pretty": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
