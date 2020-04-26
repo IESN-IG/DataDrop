@@ -52,7 +52,6 @@ module.exports.execute = (client, logger, message, args) => {
   if (command.description) data.push(`**Description:** ${command.description}`);
   if (command.usage)
     data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
-  data.push(`**Cooldown:** ${command.cooldown || 3} seconde(s)`);
 
   msg = new MessageEmbed()
     .setTitle(`Aide pour '${command.name}'`)
