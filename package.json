@@ -1,9 +1,10 @@
 {
   "name": "datadrop",
-  "version": "1.1.2",
-  "main": "datadrop.js",
+  "version": "1.1.4",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon datadrop.js",
+    "build": "tsc",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,16 +18,20 @@
   },
   "homepage": "https://github.com/IESN-IG/DataDrop#readme",
   "dependencies": {
-    "@hunteroi/advanced-logger": "0.0.2",
-    "chalk": "^3.0.0",
-    "discord.js": "^12.0.2",
-    "dotenv-flow": "^3.1.0",
-    "moment": "^2.24.0",
-    "moment-timezone": "^0.5.28",
-    "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.2"
+    "@hunteroi/advanced-logger": "0.0.3",
+    "@keyv/sqlite": "^2.0.2",
+    "common-tags": "^1.8.0",
+    "discord.js": "^12.2.0",
+    "discord.js-pagination": "^1.0.2",
+    "dotenv-flow": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "@types/common-tags": "^1.8.0",
+    "@types/glob": "^7.1.1",
+    "@types/node": "^13.13.2",
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.3",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.8.3"
   }
 }
