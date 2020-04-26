@@ -1,4 +1,4 @@
-const { rolesChannelid, optionsChannelid, version } = require('../config');
+const { rolesChannelid, optionsChannelid } = require('../config');
 
 const eventListener = (client, logger) => {
   const rolesChannel = client.channels.cache.get(rolesChannelid);
@@ -14,8 +14,6 @@ const eventListener = (client, logger) => {
     .then((collected) =>
       logger.info(collected.size + ' messages récupérés dans ' + optionsChannel.id)
     );
-
-  client.user.setActivity(version);
 
   logger.info(`Connecté en tant que ${client.user.tag}!`);
 };

@@ -1,7 +1,8 @@
 module.exports = {
   name: 'unload',
-  description: 'Unload a command',
-  usage: '<command>',
+  description: 'Décharge une commande',
+  aliases: ['décharge', 'decharge'],
+  usage: '<commande>',
   ownersOnly: true,
   mandatoryArgs: true,
   isNotUnloadable: true,

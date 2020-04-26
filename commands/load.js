@@ -1,7 +1,8 @@
 module.exports = {
   name: 'load',
-  description: 'Load a command',
-  usage: '<command>',
+  description: 'Charge une commande',
+  usage: '<commande>',
+  aliases: ['charge'],
   ownersOnly: true,
   mandatoryArgs: true,
   isNotUnloadable: true,

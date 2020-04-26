@@ -1,7 +1,9 @@
 module.exports = {
   ownerId: process.env.OWNER,
   prefix: process.env.PREFIX,
-  version: process.env.VERSION,
+  version: `${process.env.VERSION}-${process.env.TYPE.toLowerCase()}`,
+  name: `${process.env.NAME} ${process.env.TYPE}`,
+  repository: 'https://github.com/IESN-IG/Datadrop',
 
   communitymanagerRoleid: '288659580064366592',
   adminRoleid: '360850813914185738',
@@ -38,8 +40,5 @@ module.exports = {
   annoncesEmote: '📢',
   driveManagerEmote: '📝',
   smartcityEmote: '🏘',
-  datascienceEmote: '📊',
-
-  ok_hand: '👌',
-  zeroWidthSpace: '​',
+  datascienceEmote: '📊'
 };

@@ -22,6 +22,7 @@ const {
 
 module.exports = {
   name: 'rolesreact',
+  description: 'Envoie le message de réaction des rôles dans le canal approprié',
   guildOnly: true,
   ownerOnly: true,
 

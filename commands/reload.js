@@ -1,7 +1,8 @@
 module.exports = {
   name: 'reload',
-  description: 'Reload one or all command',
-  usage: '[command]',
+  description: 'Recharge une ou toutes les commandes',
+  aliases: ['recharge'],
+  usage: '[commande]',
   ownersOnly: true,
   mandatoryArgs: true,
   isNotUnloadable: true,

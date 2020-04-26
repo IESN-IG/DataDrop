@@ -5,7 +5,7 @@ module.exports = {
   name: 'help',
   description:
     "Liste toutes les commandes disponibles ou les informations d'une commande fournie en paramètres",
-  aliases: ['commandes'],
+  aliases: ['commandes', 'aide'],
   usage: '[commande]',
 };
 

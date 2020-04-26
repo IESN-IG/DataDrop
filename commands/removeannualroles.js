@@ -4,7 +4,6 @@ const {
   ig3Roleid,
   tuteurRoleid,
   driveManagerRoleid,
-  ok_hand,
 } = require('../config');
 
 module.exports = {
@@ -59,6 +58,6 @@ module.exports = {
     //
 
     logger.info('Tous les rôles annuels ont été purgés.');
-    return message.channel.send(ok_hand);
+    return message.channel.send(':ok_hand:');
   },
 };

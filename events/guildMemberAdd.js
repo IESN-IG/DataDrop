@@ -11,6 +11,8 @@ const {
 const { MessageEmbed } = require('discord.js');
 
 const eventListener = (client, logger, member) => {
+  if (member.user.bot) return;
+
   const annoncesRole = member.guild.roles.cache.get(annoncesRoleid);
 
   const fields = [
