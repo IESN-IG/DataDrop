@@ -27,17 +27,14 @@
     "get-value": "^3.0.1",
     "has-value": "^2.0.2",
     "merge-deep": "^3.0.2",
+    "moment": "^2.24.0",
     "set-value": "^3.0.2",
     "union-value": "^2.0.1",
     "unset-value": "^1.0.0"
   },
   "devDependencies": {
-    "@types/common-tags": "^1.8.0",
-    "@types/glob": "^7.1.1",
-    "@types/node": "^13.13.2",
     "eslint": "^6.8.0",
     "nodemon": "^2.0.3",
-    "reflect-metadata": "^0.1.13",
     "typescript": "^3.8.3"
   }
 }
