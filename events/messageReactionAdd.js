@@ -19,7 +19,7 @@ const {
   datascienceEmote,
 } = require('../config');
 
-module.exports = async (client, log, messageReaction, user) => {
+const eventListener = async (client, log, messageReaction, user) => {
   const message = messageReaction.message;
   const rolesChannel = message.guild.channels.cache.get(rolesChannelid);
   const optionsChannel = message.guild.channels.cache.get(optionsChannelid);
@@ -111,4 +111,9 @@ module.exports = async (client, log, messageReaction, user) => {
         break;
     }
   }
+};
+
+module.exports = {
+  name: 'messageReactionAdd',
+  listen: eventListener
 };

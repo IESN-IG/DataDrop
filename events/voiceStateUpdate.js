@@ -5,7 +5,7 @@ const {
   salleDeClasseBloc3Channelid,
 } = require('../config');
 
-module.exports = async (client, log, oldState, newState) => {
+const eventListener = async (client, log, oldState, newState) => {
   const classrooms = [
     salleDeClasseBloc1Channelid,
     salleDeClasseBloc2Channelid,
@@ -35,4 +35,9 @@ module.exports = async (client, log, oldState, newState) => {
       )
     )
     .catch(log.error);
+};
+
+module.exports = {
+  name: 'voiceStateUpdate',
+  listen: eventListener
 };

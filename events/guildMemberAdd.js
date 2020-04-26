@@ -10,7 +10,7 @@ const {
 } = require('../config');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = (client, log, member) => {
+const eventListener = (client, log, member) => {
   const annoncesRole = member.guild.roles.cache.get(annoncesRoleid);
 
   const fields = [
@@ -65,4 +65,9 @@ module.exports = (client, log, member) => {
       )
     )
     .catch(log.error);
+};
+
+module.exports = {
+  name: 'guildMemberAdd',
+  listen: eventListener
 };

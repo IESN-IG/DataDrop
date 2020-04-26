@@ -1,31 +1,22 @@
-const { Client, Collection } = require('discord.js');
-const fs = require('fs');
-const log = require('./utils/logger');
+const { Client } = require('discord.js');
+const config = require('./config');
+const logger = require('./utils/logger');
 
-const client = new Client();
-client.commands = new Collection();
+const client = new Client({ disableMentions: 'everyone', fetchAllMembers: true });
+require('./fileHandler')(client, logger);
+client.config = config;
 
-// TODO: refactor 12 & 23 (dry principle)
-fs.readdir('./events/', (err, files) => {
-  if (err) return console.error;
-  files.forEach((file) => {
-    if (!file.endsWith('.js')) return;
-    const evt = require(`./events/${file}`);
-    let evtName = file.split('.')[0];
-    log.info(`Event '${evtName}' chargé`);
-    client.on(evtName, evt.bind(null, client, log));
-  });
-});
+client.init = async () => {
+  await client.loadEventsAsync();
+  await client.loadCommandsAsync();
+  client.login(); // discordjs automatically loads DISCORD_TOKEN from .env file
+};
 
-fs.readdir('./commands/', async (err, files) => {
-  if (err) return console.error;
-  files.forEach((file) => {
-    if (!file.endsWith('.js')) return;
-    const props = require(`./commands/${file}`);
-    let cmdName = file.split('.')[0];
-    log.info(`Commande '${cmdName}' chargée`);
-    client.commands.set(cmdName, props);
-  });
-});
+client.kill = async () => {
+  logger.info('Arrêt en cours...');
+  await client.unloadCommandsAsync();
+  await client.destroy();
+  process.exit();
+};
 
-client.login(); // discordjs automatically loads DISCORD_TOKEN from .env file
+client.init();

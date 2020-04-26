@@ -1,6 +1,6 @@
 const { rolesChannelid, optionsChannelid, version } = require('../config');
 
-module.exports = (client, log) => {
+const eventListener = (client, log) => {
   const rolesChannel = client.channels.cache.get(rolesChannelid);
   const optionsChannel = client.channels.cache.get(optionsChannelid);
   rolesChannel.messages
@@ -18,4 +18,9 @@ module.exports = (client, log) => {
   client.user.setActivity(version);
 
   log.info(`Connecté en tant que ${client.user.tag}!`);
+};
+
+module.exports = {
+  name: 'ready',
+  listen: eventListener
 };
