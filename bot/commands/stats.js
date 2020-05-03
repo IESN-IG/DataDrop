@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { generateTimeString } = require('../utils');
+const { generateTimeString } = require('../../utils');
 
 module.exports = {
   name: 'stats',

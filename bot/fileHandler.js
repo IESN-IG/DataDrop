@@ -1,5 +1,5 @@
 const { Collection } = require('discord.js');
-const { loadFileAsync, loadFilesAsync } = require('./utils/FileManager');
+const { loadFileAsync, loadFilesAsync } = require('@fileManager');
 const path = require('path');
 
 function handleLoading(client, logger) {

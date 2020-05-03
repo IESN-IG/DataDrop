@@ -1,5 +1,5 @@
 const { stripIndent } = require('common-tags');
-const { generateTimeString } = require('../utils');
+const { generateTimeString } = require('../../utils');
 const birthdate = 1566941040000;
 
 module.exports = {

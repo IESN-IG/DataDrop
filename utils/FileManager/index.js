@@ -6,7 +6,7 @@ const readdirAsync = require('util').promisify(fs.readdir);
 
 async function readDirectoryAsync(directory) {
   let files = [];
-  const directoryPath = path.join(__dirname, '../../', directory);
+  const directoryPath = path.join(__dirname, '../../bot', directory);
   if (fs.existsSync(directoryPath)) {
     files = await readdirAsync(directoryPath);
   }

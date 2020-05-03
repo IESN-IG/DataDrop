@@ -1,6 +1,7 @@
 # Custom 
 utils/objectExtensions.js
 utils/*.d.ts
+database/*.sqlite
 
 # Logs
 logs

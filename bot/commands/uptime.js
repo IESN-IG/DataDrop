@@ -1,4 +1,4 @@
-const { generateTimeString } = require('../utils');
+const { generateTimeString } = require('../../utils');
 
 module.exports = {
   name: 'uptime',
