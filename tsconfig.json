@@ -12,10 +12,6 @@
       "esnext.intl",
       "esnext.symbol"
     ],
-    "types": [
-      "node",
-      "reflect-metadata"
-    ],
     "typeRoots": [
       "node_modules/@types"
     ],

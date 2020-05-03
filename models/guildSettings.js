@@ -4,28 +4,41 @@ const has = require('has-value');
 
 class GuildSettings {
   guildId;
+  guildName;
   guildPrefix;
-  roleIds = {};
-  textChannelIds = {};
-  voiceChannelIds = {};
-  emotes = {};
+  roleIds;
+  textChannelIds;
+  voiceChannelIds;
+  emotes;
+  emails;
   active;
 
   constructor(
     guildId,
-    guildPrefix = 'iesn!',
+    guildName,
+    guildPrefix,
     roleIds = {},
     textChannelIds = {},
     voiceChannelIds = {},
     emotes = {},
+    emails = [],
     active = true
   ) {
-    this.guildId = guildId.toString();
+    if (String.isNullOrWhiteSpace(guildId))
+      throw new Error('guildId must be a string and cannot be null, empty or only contain whitespaces');
+    if (String.isNullOrWhiteSpace(guildPrefix))
+      throw new Error('guildPrefix must be a string and cannot be null, empty or only contain whitespaces');
+    if (String.isNullOrWhiteSpace(guildName))
+      throw new Error('guildName must be a string and cannot be null, empty or only contain whitespaces');
+
+    this.guildId = guildId;
+    this.guildName = guildName;
     this.guildPrefix = guildPrefix;
     this.roleIds = roleIds;
     this.textChannelIds = textChannelIds;
     this.voiceChannelIds = voiceChannelIds;
     this.emotes = emotes;
+    this.emails = emails;
     this.active = active;
   }
 
@@ -44,7 +57,7 @@ class GuildSettings {
 
   update(guildSettings) {
     const properties = Object.keys(guildSettings);
-    properties.forEach(prop => {
+    properties.forEach((prop) => {
       const propValue = guildSettings[prop];
       this.setValue(prop, propValue);
     });
