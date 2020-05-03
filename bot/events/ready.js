@@ -4,11 +4,13 @@ const eventListener = async (client, logger) => {
   const totalMessages = 0;
   const databaseGuilds = Array.from(await client.db.guildSettings.keys());
   
-  client.guilds.forEach(async guild => {
+  client.guilds.cache.forEach(async guild => {
+    if (!guild.available) continue;
+
     logger.info(`Configuration de la guilde ${guild.name} (${guild.id})`);
     if (!databaseGuilds.includes(guild.id)) {
       logger.info(`Ajout des options manquantes en base de données`);
-      await client.setSettings(guild.id, new GuildSettings(guild.id.toString(), guild.name, client.config.globalPrefix));
+      await client.setSettings(guild.id, new GuildSettings(guild.id, guild.name, client.config.globalPrefix));
     }
 
     const rolesChannelId = await client.getSettings(guild.id).textChannelIds.rolesChannelId;
