@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon index.js",
+    "start": "npm run build && nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "get-value": "^3.0.1",
     "has-value": "^2.0.2",
     "merge-deep": "^3.0.2",
+    "module-alias": "^2.2.2",
     "moment": "^2.24.0",
     "set-value": "^3.0.2",
     "union-value": "^2.0.1",
@@ -36,5 +37,14 @@
     "eslint": "^6.8.0",
     "nodemon": "^2.0.3",
     "typescript": "^3.8.3"
+  },
+
+  "_moduleAliases": {
+    "@utils": "./utils",
+    "@database": "./database",
+    "@bot": "./bot",
+    "@models": "./models",
+    "@fileManager": "./utils/FileManager",
+    "@logger": "./utils/logger.js"
   }
 }

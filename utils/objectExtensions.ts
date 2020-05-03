@@ -8,6 +8,10 @@ declare global {
     removeDiacritics(): string;
     clean(): string;
   }
+
+  interface StringConstructor {
+    isNullOrWhiteSpace(input: string): boolean;
+  }
 }
 
 // <String>.toCapitalizeCase() returns a proper-cased string such as:
@@ -33,3 +37,8 @@ String.prototype.removeDiacritics = function (this: string): string {
 String.prototype.clean = function (this: string): string {
   return this.replace(/([\t\s-])+/g, '$1');
 };
+
+// String.isNullOrWhiteSpace() checks that the provided string is empty, null or only contains whitespaces
+String.isNullOrWhiteSpace = function(input: string): boolean {
+    return !/\S/.test(typeof input === 'string' ? input : '');
+}
