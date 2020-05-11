@@ -16,10 +16,12 @@ class KeyVault {
   }
 
   getGuildSettings(key) {
+    this.logger(`[DATABASE] Lecture de l'entrée identifiée par la clé \`${key}\``);
     return this.guildSettings.get(key);
   }
 
   setGuildSettings(key, value) {
+    this.logger(`[DATABASE] Écriture de la valeur \`${value}\` identifiée par la clé \`${key}\``);
     return this.guildSettings.set(key, value);
   }
 }

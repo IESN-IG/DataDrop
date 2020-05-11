@@ -1,5 +1,4 @@
 const {
-  prefix,
   communitymanagerRoleid,
   adminRoleid,
   ownerId,
@@ -7,13 +6,13 @@ const {
 
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const eventListener = (client, logger, message) => {
+const eventListener = async (client, logger, message) => {
   if (message.author.bot) return;
 
+  const guildSettings = await client.getGuildSettings(message.guild.id);
   const lowerCasedContent = message.content.toLowerCase();
-  const prefixRegex = new RegExp(
-    `^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
-  );
+  
+  const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(process.env.PREFIX)}|${escapeRegex(guildSettings.guildPrefix)})\\s*`);
   if (!prefixRegex.test(lowerCasedContent)) return;
   const [, matchedPrefix] = message.content.match(prefixRegex);
 

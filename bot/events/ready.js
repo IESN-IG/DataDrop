@@ -1,8 +1,8 @@
-const GuildSettings = require('../../models/guildSettings');
+const GuildSettings = require('@models/guildSettings');
 
 const eventListener = async (client, logger) => {
   const totalMessages = 0;
-  const databaseGuilds = Array.from(await client.db.guildSettings.keys());
+  const databaseGuilds = Array.from(await client.database.guildSettings.keys());
   
   client.guilds.cache.forEach(async guild => {
     if (!guild.available) continue;

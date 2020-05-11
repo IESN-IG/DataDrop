@@ -27,9 +27,9 @@ class Datadrop {
   prepare() {
     require('./fileHandler')(this.client, this.logger);
 
-    this.client.db = new KeyVault(this.logger);
-    this.client.getSettings = this.client.db.guildSettings.get;
-    this.client.setSettings = this.client.db.guildSettings.set; 
+    this.client.database = new KeyVault(this.logger);
+    this.client.getSettings = this.client.database.getGuildSettings;
+    this.client.setSettings = this.client.database.setGuildSettings; 
   }
 
   async init() {
