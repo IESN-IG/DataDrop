@@ -1,43 +1,14 @@
-const {
-  salleDeClasseChannelname,
-  salleDeClasseBloc1Channelid,
-  salleDeClasseBloc2Channelid,
-  salleDeClasseBloc3Channelid,
-} = require('../config');
+const { salleDeClasseChannelname } = require('../config');
 
-const eventListener = async (client, logger, oldState, newState) => {
-  const classrooms = [
-    salleDeClasseBloc1Channelid,
-    salleDeClasseBloc2Channelid,
-    salleDeClasseBloc3Channelid,
-  ];
+module.exports = async (client, log, oldState, newState) => {
+    if ((!oldState.channelID && newState.channelID) || !client.classrooms.includes(oldState.channelID)) return;
 
-  if (
-    (!oldState.channelID && newState.channelID) ||
-    !classrooms.includes(oldState.channelID)
-  )
-    return;
+    const classroomChannel = await client.channels.fetch(oldState.channelID);
+    const classroomChannelMembers = Array.from(classroomChannel.members.values());
 
-  const classroomChannel = await client.channels.fetch(oldState.channelID);
-  const classroomChannelMembers = Array.from(classroomChannel.members.values());
+    if (classroomChannelMembers.length > 0 || classroomChannel.name.toLowerCase() === salleDeClasseChannelname.toLowerCase()) return;
 
-  if (
-    classroomChannelMembers.length > 0 ||
-    classroomChannel.name === salleDeClasseChannelname
-  )
-    return;
-
-  classroomChannel
-    .setName(salleDeClasseChannelname)
-    .then((c) =>
-      logger.info(
-        `Le canal de type '${c.type}' identifié <${c.id}> a été renommé avec succès`
-      )
-    )
-    .catch(logger.error);
-};
-
-module.exports = {
-  name: 'voiceStateUpdate',
-  listen: eventListener
-};
+    classroomChannel.setName(salleDeClasseChannelname)
+        .then(c => log.info(`Le canal de type '${c.type}' identifié <${c.id}> a été renommé avec succès`))
+        .catch(log.error);
+}
